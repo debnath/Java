@@ -16,4 +16,8 @@ public class StringUtilLib {
 		return methods;
 	}
 	
+	public String reverse(String input) {
+		return input;
+	}
+	
 }

@@ -22,16 +22,17 @@ public class StringUtilCLI {
 	 */
 	public String getAvailableFunctions() {
 		Method[] methods = this.stringLib.getMethods();
-		String available = "";
+		String available = "";	
 		for (Method m : methods) {
-			String method = m.toString();
-			int beginIndex = method.lastIndexOf('.') + 1; //skip including .
-			int endIndex = method.length() - 2; //skip parentheses () in function name
-			String shortMethod = method.substring(beginIndex, endIndex);						
-			available = available + "\n " + shortMethod;
+			String methodName = m.toString();
+			available = available + "\n " + methodName;
+			int parenthesisIndex = methodName.lastIndexOf('(');
+			int beginIndex = methodName.lastIndexOf('.', parenthesisIndex) + 1;
+			available = available + "\n \t " + methodName.substring(beginIndex, parenthesisIndex);
 		}
 		return available; 
 	}
+	
 
 	/**
 	 * @param args
@@ -52,4 +53,4 @@ public class StringUtilCLI {
 
 	
 	
-}
+	}
