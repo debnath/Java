@@ -10,12 +10,7 @@ public class StringUtilLib {
 	public StringUtilLib() 
 	{
 	}
-	
-	public Method[] getMethods() {
-		Method[] methods = this.getClass().getDeclaredMethods();
-		return methods;
-	}
-	
+
 	public String reverse(String input) {
 		return input;
 	}

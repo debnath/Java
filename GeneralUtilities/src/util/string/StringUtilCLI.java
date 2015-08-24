@@ -21,11 +21,10 @@ public class StringUtilCLI {
 	 * @return String of all available methods in a print friendly format
 	 */
 	public String getAvailableFunctions() {
-		Method[] methods = this.stringLib.getMethods();
+		Method[] methods = this.stringLib.getClass().getDeclaredMethods();
 		String available = "";	
 		for (Method m : methods) {
 			String methodName = m.toString();
-			available = available + "\n " + methodName;
 			int parenthesisIndex = methodName.lastIndexOf('(');
 			int beginIndex = methodName.lastIndexOf('.', parenthesisIndex) + 1;
 			available = available + "\n \t " + methodName.substring(beginIndex, parenthesisIndex);
