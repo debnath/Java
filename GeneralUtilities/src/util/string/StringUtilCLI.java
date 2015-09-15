@@ -21,13 +21,13 @@ public class StringUtilCLI {
 	 * @return String of all available methods in a print friendly format
 	 */
 	public String getAvailableFunctions() {
-		Method[] methods = this.stringLib.getClass().getDeclaredMethods();
+	  Method[] methods = this.stringLib.getClass().getDeclaredMethods();
 		String available = "";	
 		for (Method m : methods) {
-			String methodName = m.toString();
-			int parenthesisIndex = methodName.lastIndexOf('(');
-			int beginIndex = methodName.lastIndexOf('.', parenthesisIndex) + 1;
-			available = available + "\n \t " + methodName.substring(beginIndex, parenthesisIndex);
+		  String methodName = m.toString();
+		  int parenthesisIndex = methodName.lastIndexOf('(');
+		  int beginIndex = methodName.lastIndexOf('.', parenthesisIndex) + 1;
+		  available = available + "\n \t -f " + methodName.substring(beginIndex, parenthesisIndex);
 		}
 		return available; 
 	}
@@ -47,9 +47,17 @@ public class StringUtilCLI {
 					"\n Use --help for further information.");
 			System.exit(0);
 		}
+		 String functionName = args[1];
+		 String input = args[3];
+		 
+		 try {
+		   Method m = cli.getClass().getMethod(functionName, input.getClass());
+		   Object ret = m.invoke(cli, input);
+		 }
+		 catch (Exception e) {
+		   
+		 }
+		 
 		
-	}
-
-	
-	
-	}
+	}	
+}

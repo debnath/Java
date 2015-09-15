@@ -7,12 +7,14 @@ import java.lang.reflect.Method;
  */
 public class StringUtilLib {
 
-	public StringUtilLib() 
-	{
+	public StringUtilLib() {
 	}
 
 	public String reverse(String input) {
-		return input;
+	  //method 1
+	  String output =  new StringBuilder(input).reverse().toString();
+	  System.out.println("Input is " + input + " and output is " + output);
+		return output;
 	}
 	
 }
